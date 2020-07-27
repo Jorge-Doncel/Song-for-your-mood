@@ -6,7 +6,6 @@ from numpy import asarray
 from PIL import Image
 import json
 from keras.models import model_from_json
-import matplotlib.pyplot as plt
 from PIL import Image
 
 face_cascade = cv2.CascadeClassifier('../data/haarcascade_frontalface_default.xml')
