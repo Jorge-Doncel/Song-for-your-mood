@@ -8,7 +8,7 @@ from keras.models import model_from_json
 from PIL import Image
 import matplotlib.pyplot as plt
 
-face_cascade = cv2.CascadeClassifier('../data/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 def getFace(img):
     img_bw = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)

@@ -11,7 +11,7 @@ import pandas as pd
 import pymongo
 import matplotlib.pyplot as plt
 
-df=pd.read_csv('data/songs_clean.csv')
+df=pd.read_csv('songs_clean.csv')
 app = Flask(__name__, template_folder='template')
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -27,7 +27,6 @@ def upload():
 
     if not os.path.isdir(target):
         os.mkdir(target)
-
 
     for file in request.files.getlist("file"):
         print(file)
