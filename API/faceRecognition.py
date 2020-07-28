@@ -1,12 +1,12 @@
 import pandas as pd
 import cv2
-import matplotlib.pyplot as plt
 import numpy as np
 from numpy import asarray
 from PIL import Image
 import json
 from keras.models import model_from_json
 from PIL import Image
+import matplotlib.pyplot as plt
 
 face_cascade = cv2.CascadeClassifier('../data/haarcascade_frontalface_default.xml')
 

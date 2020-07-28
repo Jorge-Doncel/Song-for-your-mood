@@ -8,8 +8,10 @@ import json
 from keras.models import model_from_json
 import numpy as np
 import pandas as pd
+import pymongo
+import matplotlib.pyplot as plt
 
-df=pd.read_csv('../data/songs_clean.csv')
+df=pd.read_csv('data/songs_clean.csv')
 app = Flask(__name__, template_folder='template')
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -26,11 +28,13 @@ def upload():
     if not os.path.isdir(target):
         os.mkdir(target)
 
+
     for file in request.files.getlist("file"):
         print(file)
         filename = file.filename
         destination = "/".join([target, filename])
-
+        print(destination)
+        file.save(destination)
     return redirect(url_for('answer', name=filename))
 
 with open('fer.json','r') as f:
@@ -51,5 +55,6 @@ def answer(name):
     album= feeling_song.iloc[0]["track_album_name"]
     playlist= feeling_song.sample(n=1).iloc[0]["playlist_name"]
     return dumps(f'Today you are {senti[max(range(len(pred2)), key = lambda x: pred2[x])]}. I recommend the song {song} by {artist} from the album  {album}. You can find in the Spotify playlist call {playlist}')
+
 if __name__ == "__main__":
     app.run("0.0.0.0", PORT, debug=True)
