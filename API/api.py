@@ -41,10 +41,10 @@ def upload():
         file.save(destination)
     return redirect(url_for('answer', name=filename))
 
-with open('fer.json','r') as f:
+with open('models/fer.json','r') as f:
     model_json = json.load(f)
 model = model_from_json(model_json)
-model.load_weights('fer_model.h5')
+model.load_weights('models/fer_model.h5')
 
 @app.route("/answer/<name>")    
 def answer(name):

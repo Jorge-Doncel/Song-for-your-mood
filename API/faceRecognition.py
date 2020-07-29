@@ -9,7 +9,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import face_recognition
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
 
 def openImageAndDetectFaces(path):
     image = face_recognition.load_image_file(path)
