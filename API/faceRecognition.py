@@ -7,36 +7,28 @@ import json
 from keras.models import model_from_json
 from PIL import Image
 import matplotlib.pyplot as plt
+import face_recognition
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-def getFace(img):
-    img_bw = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    faces = face_cascade.detectMultiScale(img_bw, 1.1, 4)
-
-    # Ensure there is at least 1 face
-    if len(faces) > 0:
-        print("Face detected!")
-        x,y,w,h = faces[0]
-        return new_size(img_bw[y:y+h,x:x+w])
-    else:
-        raise ValueError("No face found")
-        
-        
 def openImageAndDetectFaces(path):
-    img = cv2.imread(path)
-    plt.imshow(img)
+    image = face_recognition.load_image_file(path)
+    face_locations = face_recognition.face_locations(image)
     try:
-        print(f"Detecting faces in {path}")
-        face_patch = getFace(img)
-        return face_patch
+        print("I found {} face(s) in this photograph.".format(len(face_locations)))
+        for face_location in face_locations:
+            top, right, bottom, left = face_location
+            face_image = image[top:bottom, left:right]
+            face_image = cv2.cvtColor(face_image, cv2.COLOR_RGB2GRAY)
+            pil_image = Image.fromarray(face_image)
+            plt.imshow(pil_image)
+            return new_size(pil_image)
     except ValueError as e:
-        print(f"Not found image in {path}")
-        return None
-
+        print(f"No face found")
+        
+        
 def new_size(img):
     size=(48,48)
-    convert_to = Image.fromarray(img)
-    convert_from = convert_to.resize(size)
+    convert_from = img.resize(size)
     face=asarray(convert_from)/255
     return face

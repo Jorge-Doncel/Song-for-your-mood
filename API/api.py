@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, render_template,url_for, send_from_directory, redirect
 from src.config import PORT
 from bson.json_util import dumps
-from faceRecognition import getFace, openImageAndDetectFaces, new_size
+from faceRecognition import openImageAndDetectFaces, new_size
 import json
 from keras.models import model_from_json
 import numpy as np
@@ -14,8 +14,9 @@ import urllib.request
 from bs4 import BeautifulSoup
 from string import Template
 import re
+import face_recognition
 
-df=pd.read_csv('songs_clean.csv')
+df=pd.read_csv('data/songs_clean.csv')
 app = Flask(__name__, template_folder='template')
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -45,10 +46,10 @@ with open('fer.json','r') as f:
 model = model_from_json(model_json)
 model.load_weights('fer_model.h5')
 
-@app.route("/answer/<name>")
+@app.route("/answer/<name>")    
 def answer(name):
     PIC = openImageAndDetectFaces(f"images/{name}")
-    senti= ("angry", "disgust", "fear", "happy", "sadness", "surprise", "neutral")
+    senti= senti= ('angry', 'disgust', 'fear', 'happy', 'sadness', 'surprise', 'neutral')
     PIC = np.expand_dims(PIC,axis=0).reshape(np.expand_dims(PIC,axis=0).shape[0], 48, 48, 1)
     pred2 = model.predict(PIC)[0]
     feeling=senti[max(range(len(pred2)), key = lambda x: pred2[x])]
