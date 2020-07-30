@@ -4,11 +4,17 @@
 
 ## Table of Contents
 
-
+- [API](#API)
 - [Objective](#Objective)
 - [Libraries](#libraries)
 - [Resources](#resources)
-- [API](#API)
+- [How does it works?](#How-does-it-works?)
+- [Data Processing](#data-processing)
+
+
+## API
+
+Click this link [API songs](https://apisongsface.herokuapp.com/)
 
 ## Objective
 
@@ -41,6 +47,4 @@ For the days where it is difficult to decide, you can use this API. Upload a pho
 
 Click [here](https://www.kaggle.com/imuhammad/audio-features-and-lyrics-of-spotify-songs) if you can to go to Spotify dataset
 
-## API
-
-Click this link [API songs](https://apisongsface.herokuapp.com/)
+## Resources
