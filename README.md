@@ -1,6 +1,6 @@
 # Get a song for your mood
 
-![Music](https://github.com/Jorge-Doncel/Song-for-your-mood/blob/master/input/285-girl-listening-to-music-vector-clip-art.png)
+![Music](https://github.com/Jorge-Doncel/Song-for-your-mood/blob/master/input/portda.png)
 
 ## Table of Contents
 
@@ -47,4 +47,8 @@ For the days where it is difficult to decide, you can use this API. Upload a pho
 
 Click [here](https://www.kaggle.com/imuhammad/audio-features-and-lyrics-of-spotify-songs) if you can to go to Spotify dataset
 
-## Resources
+## How does it works?
+
+![funciona](https://github.com/Jorge-Doncel/Song-for-your-mood/blob/master/input/funciona.png)
+
+## Data Processing
