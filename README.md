@@ -53,3 +53,10 @@ Click [here](https://www.kaggle.com/imuhammad/audio-features-and-lyrics-of-spoti
 
 ## Data Processing
 
+First, 2 NN models were train so they differentiate 7 different types of sentiment: angry, disgust, fear, happy, neutral, sad and surprise. We used the model with best accuracy.
+
+Face recognition library were use to detect the face in a photo, take the coordenates, cut the photo, transform to gray scale and resize the image to 48x48 (the model were train with 48x48 image)
+
+In order to select the best song, Spotify database were used. Just english songs were selected. After analize the sentiment of all lyrics with NLTK library, all songs were categorize in 7 different sentiments.
+
+Finally, web scraping and regex were used to get the song url in youtube. 
